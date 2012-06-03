@@ -612,4 +612,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- USB Mass Storage -->
     <string name="usb_mass_storage_title">Mass storage (UMS)</string>
     <string name="usb_mass_storage_summary">Lets you transfer any files between your computer and your SD card by mounting it as a flash device</string>
+
+    <!-- Stylus Icon -->
+    <string name="stylus_icon_enabled_title">Show icon when using stylus</string>
+    <string name="stylus_icon_enabled_summary">Show the pointer icon when hovering or drawing with the stylus</string>
 </resources>
