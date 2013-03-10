@@ -1218,6 +1218,8 @@
                 android:resource="@id/development_settings" />
         </activity>
 
+	<activity android:name=".beanstalk.About" />
+
         <activity android:name="Settings$PrintSettingsActivity"
                 android:label="@string/print_settings"
                 android:taskAffinity="com.android.settings"
