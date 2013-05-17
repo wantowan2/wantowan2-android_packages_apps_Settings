@@ -5036,4 +5036,9 @@
     <!-- Launches Dev Tools -->
     <string name="development_tools_title">Launch Tools</string>
 
+    <!-- Donate to BeanStalk Builds -->
+    <string name="donate_beanstalk_title">Support BeanStalk Builds</string>
+    <string name="donate_beanstalk_summary">Donate to BeanStalk Builds.</string>
+    <string name="donate_link" formatted="false">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=HUUHRXDXNMZPU</string>
+
 </resources>
