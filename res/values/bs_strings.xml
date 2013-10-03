@@ -300,4 +300,7 @@
 
     <!-- Buttons -->
     <string name="header_button_settings">Buttons</string>
+
+    <!-- Lockscreen battery ring -->
+    <string name="battery_around_lockscreen_ring">Battery around unlock ring</string>
 </resources>
