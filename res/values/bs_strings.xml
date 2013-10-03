@@ -298,4 +298,6 @@
     <string name="animation_duration_default">Default</string>
     <string name="header_summary_animation">@null</string>
 
+    <!-- Buttons -->
+    <string name="header_button_settings">Buttons</string>
 </resources>
