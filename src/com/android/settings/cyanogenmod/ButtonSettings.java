@@ -46,6 +46,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String CATEGORY_HEADSETHOOK = "button_headsethook";
     private static final String BUTTON_HEADSETHOOK_LAUNCH_VOICE = "button_headsethook_launch_voice";
     private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
+    private static final String KEY_BLUETOOTH_INPUT_SETTINGS = "bluetooth_input_settings";
 
     private static final String CATEGORY_HOME = "home_key";
     private static final String CATEGORY_MENU = "menu_key";
@@ -233,6 +234,9 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         mHeadsetHookLaunchVoice = (CheckBoxPreference) findPreference(BUTTON_HEADSETHOOK_LAUNCH_VOICE);
         mHeadsetHookLaunchVoice.setChecked(Settings.System.getInt(resolver,
                 Settings.System.HEADSETHOOK_LAUNCH_VOICE, 1) == 1);
+
+        Utils.updatePreferenceToSpecificActivityFromMetaDataOrRemove(getActivity(),
+                getPreferenceScreen(), KEY_BLUETOOTH_INPUT_SETTINGS);
     }
 
     private ListPreference initActionList(String key, int value) {
