@@ -372,6 +372,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- General strings -->
     <string name="ok">OK</string>
     <string name="reset">Reset</string>
+    <string name="enabled">Enabled</string>
+    <string name="disabled">Disabled</string>
+    <string name="default_string">Default</string>
 
     <!-- Settings main menu category heading. Rom (Launcher, Themes, System). [CHAR LIMIT=40] -->
     <string name="header_category_rom_settings">BeanStalk settings</string>
@@ -387,11 +390,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="hex">Hex:</string>
     <string name="hex_hint">#ff000000</string>
     <string name="set">Set</string>
-    <string name="color_default">Default</string>
 
     <!-- Status bar -->
     <string name="status_bar_title">Status bar</string>
-    <string name="status_bar_style_title">Style</string>
+    <string name="status_bar_style_title">Status bar options</string>
 
     <!-- Status bar | Clock -->
     <string name="status_bar_clock">Clock and date</string>
@@ -429,7 +431,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Notification Drawer Settings -->
     <string name="notification_drawer_title">Notification drawer</string>
-    <string name="notification_drawer_style_title">Style</string>
+    <string name="notification_drawer_style_title">Notification drawer options</string>
     <string name="notification_style_summary">Change your notification drawer style</string>
     <string name="notification_drawer_background">Background and transparency</string> 
 
@@ -445,7 +447,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Advanced low battery indicator options -->  
     <string name="lights_and_warnings_title">Lights and warnings</string>
-    <string name="lights_and_warnings_style_title">Style</string>
+    <string name="lights_and_warnings_style_title">Lights and warnings options</string>
     <string name="pref_low_battery_warning_policy_title">Low battery warning</string>
     <string name="pref_low_battery_warning_policy_dialog_title">Indicate low battery warning with</string>
     <string name="low_battery_warning_policy_popup_sound">Pop-up and sound</string>
@@ -461,7 +463,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Alternate default app picker -->
     <string name="general_settings_title">General settings</string>
-    <string name="general_settings_style_title">Style</string>
+    <string name="general_settings_style_title">General options</string>
     <string name="display_short">Display</string>
     <string name="misc_short">Misc</string>
     <string name="alt_resolver">Use Alt Default App Grid</string>
@@ -485,7 +487,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Display : Animation options -->
     <string name="screen_and_animations_title">Screen and animations</string>
-    <string name="display_category_animation_options_title">Animation options</string>
+    <string name="display_category_animation_options_title">Screen and animation options</string>
     <string name="system_power_crt_mode_title">CRT animation </string>
     <string name="system_power_crt_mode_dialog_title">CRT animation</string>
     <string name="system_power_crt_mode_off">Don\'t show</string>
