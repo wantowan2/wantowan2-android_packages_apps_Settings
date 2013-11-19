@@ -84,7 +84,7 @@
     <!--User Interface -->
     <header
         android:id="@+id/interface_settings"
-        android:icon="@drawable/ic_settings_interface"
+        android:icon="@drawable/ic_settings_about_beanstalk"
         android:fragment="com.android.settings.beanstalk.InterfaceSettings"
         android:title="@string/interface_settings_title" />
 
