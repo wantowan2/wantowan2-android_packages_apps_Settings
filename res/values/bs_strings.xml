@@ -23,10 +23,10 @@
     <string name="additional_options_title">Additional options</string>
 
     <!-- Settings main menu category heading. Rom (Launcher, Themes, System). [CHAR LIMIT=40] -->
-    <string name="header_category_rom_settings">BeanStalk settings</string>
+    <string name="header_category_rom_settings">Advanced</string>
 
     <!-- BeanStalk settings screens -->
-    <string name="interface_settings_title">User Interface</string>
+    <string name="interface_settings_title">BeanStalk Options</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
