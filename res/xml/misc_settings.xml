@@ -30,6 +30,13 @@
             android:entries="@array/media_scanner_on_boot_entries"
             android:entryValues="@array/media_scanner_on_boot_values" />
 
+	<!-- Recents RAM bar -->
+
+    <PreferenceScreen
+            android:key="recents_ram_bar"
+            android:fragment="com.android.settings.beanstalk.RamBar"
+            android:title="@string/ram_bar" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
