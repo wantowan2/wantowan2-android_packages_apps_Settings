@@ -374,4 +374,13 @@
 
     <!-- Buttons settings header -->
     <string name="button_settings">Buttons</string>
+
+    <!-- Misc BeanStalk Settings -->
+    <string name="misc_settings_title">Misc options</string>
+
+    <!-- MediaScanner behavior on boot -->
+    <string name="media_scanner_on_boot_title">MediaScanner behavior on boot</string>
+    <string name="media_scanner_on_boot_enabled">Scan media</string>
+    <string name="media_scanner_on_boot_ask">Ask to scan (notification)</string>
+    <string name="media_scanner_on_boot_disabled">Do not scan media</string>
 </resources>
