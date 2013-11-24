@@ -69,6 +69,8 @@
     <uses-permission android:name="android.permission.MANAGE_DEVICE_ADMINS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.CHANGE_PRIVACY_GUARD_STATE" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <permission
         android:name="android.permission.REQUEST_SUPERUSER"
@@ -182,6 +184,37 @@
                 <category android:name="com.android.settings.SHORTCUT" />
             </intent-filter>
         </activity>	
+
+        <!-- QuietHours SmsCall Service -->
+
+        <service android:name=".beanstalk.service.SmsCallService"/>
+        <service android:name=".beanstalk.service.AlarmService"/>
+
+        <receiver
+            android:name=".beanstalk.service.AlarmReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"></action>
+                <action android:name="android.intent.action.TIME_CHANGED"></action>
+                <action android:name="android.intent.action.DATE_CHANGED"></action>
+                <action android:name="com.android.settings.beanstalk.service.SCHEDULE_SERVICE_COMMAND"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".beanstalk.service.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".beanstalk.service.BypassAlarm"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:taskAffinity="com.android.settings.beanstalk.service.BypassAlarm"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 
         <!-- Wireless Controls -->
 
