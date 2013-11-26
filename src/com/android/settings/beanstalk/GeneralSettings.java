@@ -9,10 +9,13 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.preference.PreferenceCategory;
+import android.preference.ListPreference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 public class GeneralSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -36,8 +39,9 @@ public class GeneralSettings extends SettingsPreferenceFragment implements
 
 	mVolumeWake = (CheckBoxPreference) findPreference(KEY_VOLUME_WAKE);
         if (mVolumeWake != null) {
-            mVolumeWake.setChecked(Settings.System.getInt(resolver,
-                    Settings.System.VOLUME_WAKE_SCREEN, 0) == 1);
+            mVolumeWake.setChecked(Settings.System.getInt(
+		getActivity().getContentResolver(),
+                Settings.System.VOLUME_WAKE_SCREEN, 0) == 1);
             mVolumeWake.setOnPreferenceChangeListener(this);
         }
 
@@ -61,10 +65,11 @@ public class GeneralSettings extends SettingsPreferenceFragment implements
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+	final String key = preference.getKey();
         if (KEY_VOLUME_WAKE.equals(key)) {
             Settings.System.putInt(getContentResolver(),
                     Settings.System.VOLUME_WAKE_SCREEN,
-                    (Boolean) objValue ? 1 : 0);
+                    (Boolean) newValue ? 1 : 0);
         }
          return true;
     }

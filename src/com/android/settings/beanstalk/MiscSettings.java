@@ -83,11 +83,11 @@ public class MiscSettings extends SettingsPreferenceFragment
             return true;
 	} else if (preference == mDisableFullscreenKeyboard) {
             Settings.System.putInt(getContentResolver(),
-                    Settings.System.DISABLE_FULLSCREEN_KEYBOARD,  (Boolean) objValue ? 1 : 0);
+                    Settings.System.DISABLE_FULLSCREEN_KEYBOARD,  (Boolean) newValue ? 1 : 0);
             return true;
 	} else if (preference == mShowEnterKey) {
             Settings.System.putInt(getContentResolver(),
-                Settings.System.FORMAL_TEXT_INPUT, (Boolean) objValue ? 1 : 0);
+                Settings.System.FORMAL_TEXT_INPUT, (Boolean) newValue ? 1 : 0);
             return true;
         }
         return false;
