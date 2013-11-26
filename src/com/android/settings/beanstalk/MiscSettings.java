@@ -16,15 +16,21 @@
 
 package com.android.settings.beanstalk;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.CheckBoxPreference;
+import android.preference.PreferenceCategory;
+import android.provider.Settings.SettingNotFoundException;
+import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 import java.util.List;
 
@@ -32,8 +38,12 @@ public class MiscSettings extends SettingsPreferenceFragment
         implements OnPreferenceChangeListener {
 
     private static final String PREF_MEDIA_SCANNER_ON_BOOT = "media_scanner_on_boot";
+    private static final String SHOW_ENTER_KEY = "show_enter_key";
+    private static final String PREF_DISABLE_FULLSCREEN_KEYBOARD = "disable_fullscreen_keyboard";
 
+    private CheckBoxPreference mDisableFullscreenKeyboard;
     private ListPreference mMsob;
+    private CheckBoxPreference mShowEnterKey;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +57,17 @@ public class MiscSettings extends SettingsPreferenceFragment
         mMsob.setSummary(mMsob.getEntry());
         mMsob.setOnPreferenceChangeListener(this);
 
+	mDisableFullscreenKeyboard =
+            (CheckBoxPreference) findPreference(PREF_DISABLE_FULLSCREEN_KEYBOARD);
+        mDisableFullscreenKeyboard.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.DISABLE_FULLSCREEN_KEYBOARD, 0) == 1);
+        mDisableFullscreenKeyboard.setOnPreferenceChangeListener(this);
+
+	mShowEnterKey = (CheckBoxPreference) findPreference(SHOW_ENTER_KEY);
+        mShowEnterKey.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.FORMAL_TEXT_INPUT, 0) == 1);
+        mShowEnterKey.setOnPreferenceChangeListener(this);
+
     }
 
     @Override
@@ -59,6 +80,14 @@ public class MiscSettings extends SettingsPreferenceFragment
 
             mMsob.setValue(String.valueOf(value));
             mMsob.setSummary(mMsob.getEntry());
+            return true;
+	} else if (preference == mDisableFullscreenKeyboard) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.DISABLE_FULLSCREEN_KEYBOARD,  (Boolean) objValue ? 1 : 0);
+            return true;
+	} else if (preference == mShowEnterKey) {
+            Settings.System.putInt(getContentResolver(),
+                Settings.System.FORMAL_TEXT_INPUT, (Boolean) objValue ? 1 : 0);
             return true;
         }
         return false;
