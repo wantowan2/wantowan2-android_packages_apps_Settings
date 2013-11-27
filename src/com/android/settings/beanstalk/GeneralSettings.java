@@ -22,7 +22,11 @@ public class GeneralSettings extends SettingsPreferenceFragment implements
 
     private static final String PREF_USE_ALT_RESOLVER = "use_alt_resolver";
     private static final String KEY_VOLUME_WAKE = "pref_volume_wake";
+    private static final String SHOW_ENTER_KEY = "show_enter_key";
+    private static final String PREF_DISABLE_FULLSCREEN_KEYBOARD = "disable_fullscreen_keyboard";
 
+    private CheckBoxPreference mDisableFullscreenKeyboard;
+    private CheckBoxPreference mShowEnterKey;
     private CheckBoxPreference mUseAltResolver;
     private CheckBoxPreference mVolumeWake;
   
@@ -45,6 +49,22 @@ public class GeneralSettings extends SettingsPreferenceFragment implements
             mVolumeWake.setOnPreferenceChangeListener(this);
         }
 
+	mDisableFullscreenKeyboard =
+            (CheckBoxPreference) findPreference(PREF_DISABLE_FULLSCREEN_KEYBOARD);
+        if (mDisableFullscreenKeyboard != null) {
+            mDisableFullscreenKeyboard.setChecked(Settings.System.getInt(
+		getActivity().getContentResolver(),
+                Settings.System.DISABLE_FULLSCREEN_KEYBOARD, 0) == 1);
+            mDisableFullscreenKeyboard.setOnPreferenceChangeListener(this);
+        }
+
+	mShowEnterKey = (CheckBoxPreference) findPreference(SHOW_ENTER_KEY);
+        if (mShowEnterKey != null) {
+            mShowEnterKey.setChecked(Settings.System.getInt(
+		getActivity().getContentResolver(),
+                Settings.System.FORMAL_TEXT_INPUT, 0) == 1);
+            mShowEnterKey.setOnPreferenceChangeListener(this);
+        }
     }
 
     @Override
@@ -70,6 +90,16 @@ public class GeneralSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.VOLUME_WAKE_SCREEN,
                     (Boolean) newValue ? 1 : 0);
+        }
+        if (PREF_DISABLE_FULLSCREEN_KEYBOARD.equals(key)) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.DISABLE_FULLSCREEN_KEYBOARD,
+		    (Boolean) newValue ? 1 : 0);
+	}
+        if (SHOW_ENTER_KEY.equals(key)) {
+            Settings.System.putInt(getContentResolver(),
+                Settings.System.FORMAL_TEXT_INPUT,
+		(Boolean) newValue ? 1 : 0);
         }
          return true;
     }
