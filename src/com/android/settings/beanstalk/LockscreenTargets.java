@@ -424,7 +424,6 @@ public class LockscreenTargets extends Fragment implements
     public void onReleased(View v, int handle) {
     }
 
-    @Override
     public void onTargetChange(View v, int whichHandle) {
     }
 
