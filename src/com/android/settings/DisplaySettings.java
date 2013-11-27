@@ -103,10 +103,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private WifiDisplayStatus mWifiDisplayStatus;
     private Preference mWifiDisplayPreference;
 
+    private CheckBoxPreference mAdaptiveBacklight;
+
     private ContentObserver mAccelerometerRotationObserver = 
             new ContentObserver(new Handler()) {
 
-    private CheckBoxPreference mAdaptiveBacklight;
+    
 
         @Override
         public void onChange(boolean selfChange) {
