@@ -706,4 +706,8 @@
     <string name="appops_sysapp_beware">Beware!</string>
     <string name="appops_sysapp_warning">"Changing permissions of core Android components might lead to undesired behavior. Change settings here at your own risk!</string>
 
+    <!-- Init.d Settings : Warning dialog -->
+    <string name="init_warning_title">Please Read First</string>
+    <string name="init_warning">The BeanStalk Init.d scripts have been added to this build for experimental purposes only.  While some people may see improved performance on certain phones, there is always the possibility that some phones may not benefit from the scripts and you may actually see a negative impact.  The ideal situation is to find the right combination of scripts that provides the best bang for your buck while keeping a certain level of stability.</string>
+
 </resources>
