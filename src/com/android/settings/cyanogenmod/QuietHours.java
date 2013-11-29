@@ -146,14 +146,19 @@ public class QuietHours extends SettingsPreferenceFragment implements
             mBypassRingtone =
                 (RingtonePreference) findPreference(KEY_BYPASS_RINGTONE);
 
+
             // Remove the "Incoming calls behaviour" note if the device does not support phone calls
-            if (mQuietHoursNote != null && getResources().getBoolean(com.android.internal.R.bool.config_voice_capable) == false) {
+            if (mQuietHoursNote != null && getResources().getBoolean(
+                        com.android.internal.R.bool.config_voice_capable) == false) {
                 getPreferenceScreen().removePreference(mQuietHoursNote);
             }
 
             // Set the preference state and listeners where applicable
-            mQuietHoursEnabled.setChecked(Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_ENABLED, 0) == 1);
-            mQuietHoursTimeRange.setTimeRange(Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_START, 0),
+            mQuietHoursEnabled.setChecked(
+                    Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_ENABLED, 0) == 1);
+            mQuietHoursEnabled.setOnPreferenceChangeListener(this);
+            mQuietHoursTimeRange.setTimeRange(
+                    Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_START, 0),
                     Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_END, 0));
             mQuietHoursTimeRange.setOnPreferenceChangeListener(this);
             mQuietHoursMute.setChecked(
@@ -215,7 +220,9 @@ public class QuietHours extends SettingsPreferenceFragment implements
                         com.android.internal.R.bool.config_intrusiveNotificationLed) == false) {
                 getPreferenceScreen().removePreference(mQuietHoursDim);
             } else {
-                mQuietHoursDim.setChecked(Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_DIM, 0) == 1);
+                mQuietHoursDim.setChecked(Settings.System.getInt(
+                        resolver, Settings.System.QUIET_HOURS_DIM, 0) == 1);
+                mQuietHoursDim.setOnPreferenceChangeListener(this);
             }
 
             mPreferencesChangeListener = new OnSharedPreferenceChangeListener() {
@@ -275,31 +282,19 @@ public class QuietHours extends SettingsPreferenceFragment implements
             return true;
         } else if (preference == mQuietHoursMute) {
             Settings.System.putInt(resolver, Settings.System.QUIET_HOURS_MUTE,
-                    mQuietHoursMute.isChecked() ? 1 : 0);
+                    (Boolean) newValue ? 1 : 0);
             return true;
         } else if (preference == mQuietHoursStill) {
             Settings.System.putInt(resolver, Settings.System.QUIET_HOURS_STILL,
-                    mQuietHoursStill.isChecked() ? 1 : 0);
+                    (Boolean) newValue ? 1 : 0);
             return true;
         } else if (preference == mQuietHoursDim) {
             Settings.System.putInt(resolver, Settings.System.QUIET_HOURS_DIM,
-                    mQuietHoursDim.isChecked() ? 1 : 0);
+                    (Boolean) newValue ? 1 : 0);
             return true;
         } else if (preference == mQuietHoursHaptic) {
             Settings.System.putInt(resolver, Settings.System.QUIET_HOURS_HAPTIC,
-                    mQuietHoursHaptic.isChecked() ? 1 : 0);
-            return true;
-        }
-        return super.onPreferenceTreeClick(preferenceScreen, preference);
-    }
-
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        ContentResolver resolver = getActivity().getApplicationContext().getContentResolver();
-        if (preference == mQuietHoursTimeRange) {
-            Settings.System.putInt(resolver, Settings.System.QUIET_HOURS_START,
-                    mQuietHoursTimeRange.getStartTime());
-            Settings.System.putInt(resolver, Settings.System.QUIET_HOURS_END,
-                    mQuietHoursTimeRange.getEndTime());
+                    (Boolean) newValue ? 1 : 0);
             return true;
         } else if (preference == mRingtoneLoop) {
             mRingtoneLoop.setSummary((Boolean) newValue
