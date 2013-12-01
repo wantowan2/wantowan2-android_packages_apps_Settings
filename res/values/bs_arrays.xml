@@ -83,7 +83,7 @@
         <item>@string/clock_date_format_custom</item>
     </string-array>
 
-    <!-- Notification drawer custom background -->
+
     <string-array name="notification_wallpaper_entries">
         <item>@string/notification_background_color_fill</item>
         <item>@string/notification_background_custom_image</item>
