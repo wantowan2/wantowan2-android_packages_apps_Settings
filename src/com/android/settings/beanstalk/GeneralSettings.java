@@ -21,14 +21,12 @@ public class GeneralSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
     private static final String PREF_USE_ALT_RESOLVER = "use_alt_resolver";
-    private static final String KEY_VOLUME_WAKE = "pref_volume_wake";
     private static final String SHOW_ENTER_KEY = "show_enter_key";
     private static final String PREF_DISABLE_FULLSCREEN_KEYBOARD = "disable_fullscreen_keyboard";
 
     private CheckBoxPreference mDisableFullscreenKeyboard;
     private CheckBoxPreference mShowEnterKey;
     private CheckBoxPreference mUseAltResolver;
-    private CheckBoxPreference mVolumeWake;
   
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,14 +38,6 @@ public class GeneralSettings extends SettingsPreferenceFragment implements
         mUseAltResolver.setChecked(Settings.System.getInt(
                 getActivity().getContentResolver(),
                 Settings.System.ACTIVITY_RESOLVER_USE_ALT, 0) == 1); 
-
-	mVolumeWake = (CheckBoxPreference) findPreference(KEY_VOLUME_WAKE);
-        if (mVolumeWake != null) {
-            mVolumeWake.setChecked(Settings.System.getInt(
-		getActivity().getContentResolver(),
-                Settings.System.VOLUME_WAKE_SCREEN, 0) == 1);
-            mVolumeWake.setOnPreferenceChangeListener(this);
-        }
 
 	mDisableFullscreenKeyboard =
             (CheckBoxPreference) findPreference(PREF_DISABLE_FULLSCREEN_KEYBOARD);
@@ -86,11 +76,6 @@ public class GeneralSettings extends SettingsPreferenceFragment implements
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
 	final String key = preference.getKey();
-        if (KEY_VOLUME_WAKE.equals(key)) {
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.VOLUME_WAKE_SCREEN,
-                    (Boolean) newValue ? 1 : 0);
-        }
         if (PREF_DISABLE_FULLSCREEN_KEYBOARD.equals(key)) {
             Settings.System.putInt(getContentResolver(),
                     Settings.System.DISABLE_FULLSCREEN_KEYBOARD,
