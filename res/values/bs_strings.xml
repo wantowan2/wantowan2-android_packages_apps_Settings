@@ -320,7 +320,7 @@
     <!-- Navigation settings -->
     <string name="navigation_settings_options_title">Navigation options</string>
     <string name="navigation_settings_title">Navigation</string>
-    <string name="power_menu_title">Global menu</string>
+    <string name="power_menu_title">Power menu</string>
 
     <!-- Power menu -->
     <string name="power_menu_style_summary">Change global menu colors</string>
