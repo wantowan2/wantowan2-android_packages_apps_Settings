@@ -26,7 +26,12 @@
             android:summary="@string/unlock_set_unlock_mode_off"
             android:persistent="false"/>
 
-	<PreferenceScreen
+        <PreferenceScreen
+            android:key="keyguard_style"
+            android:fragment="com.android.settings.beanstalk.LockscreenStyle"
+            android:title="@string/lockscreen_style_title"/>
+
+        <PreferenceScreen
             android:key="keyguard_enable_widgets"
             android:fragment="com.android.settings.beanstalk.LockscreenWidgets"
             android:title="@string/lockscreen_widgets_title"/>
