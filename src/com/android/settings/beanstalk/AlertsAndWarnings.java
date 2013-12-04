@@ -26,10 +26,12 @@ public class AlertsAndWarnings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
     private static final String KEY_LOW_BATTERY_WARNING_POLICY = "pref_low_battery_warning_policy";  
-    private static final String KEY_SCREEN_ON_NOTIFICATION_LED = "screen_on_notification_led";  
+    private static final String KEY_SCREEN_ON_NOTIFICATION_LED = "screen_on_notification_led";
+    private static final String PREF_LESS_NOTIFICATION_SOUNDS = "less_notification_sounds";  
 
     private ListPreference mLowBatteryWarning; 
-    private CheckBoxPreference mScreenOnNotificationLed;    
+    private CheckBoxPreference mScreenOnNotificationLed;
+    private ListPreference mAnnoyingNotifications;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,7 +52,14 @@ public class AlertsAndWarnings extends SettingsPreferenceFragment implements
                 Settings.System.SCREEN_ON_NOTIFICATION_LED, 1);
         mScreenOnNotificationLed = (CheckBoxPreference) findPreference(KEY_SCREEN_ON_NOTIFICATION_LED);
         mScreenOnNotificationLed.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.SCREEN_ON_NOTIFICATION_LED, 0) == 1);    
+                Settings.System.SCREEN_ON_NOTIFICATION_LED, 0) == 1);
+
+	mAnnoyingNotifications = (ListPreference) findPreference(PREF_LESS_NOTIFICATION_SOUNDS);
+        int notificationThreshold = Settings.System.getInt(getContentResolver(),
+                Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD,
+                0);
+        mAnnoyingNotifications.setValue(Integer.toString(notificationThreshold));
+        mAnnoyingNotifications.setOnPreferenceChangeListener(this);
 
     }
 
@@ -72,6 +81,7 @@ public class AlertsAndWarnings extends SettingsPreferenceFragment implements
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+	final String key = preference.getKey();
 	if (preference == mLowBatteryWarning) {
             int lowBatteryWarning = Integer.valueOf((String) newValue);
             int index = mLowBatteryWarning.findIndexOfValue((String) newValue);
@@ -80,7 +90,12 @@ public class AlertsAndWarnings extends SettingsPreferenceFragment implements
                     lowBatteryWarning);
             mLowBatteryWarning.setSummary(mLowBatteryWarning.getEntries()[index]);
             return true;
-	}  
+	} else if (PREF_LESS_NOTIFICATION_SOUNDS.equals(key)) {
+            final int val = Integer.valueOf((String) newValue);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, val);
+	    return true;
+	}
         return false;
     }
 }
