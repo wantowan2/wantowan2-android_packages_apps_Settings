@@ -43,11 +43,6 @@
         android:fragment="com.android.settings.beanstalk.NavbarSettings"
         android:title="@string/navigation_bar" />
 
-     <PreferenceScreen
-        android:key="app_sidebar"
-        android:fragment="com.android.settings.beanstalk.AppSidebar"
-        android:title="@string/app_sidebar_title" />
-
     <PreferenceScreen
         android:key="buildprop_modder"
         android:title="@string/propmodder_title" 
