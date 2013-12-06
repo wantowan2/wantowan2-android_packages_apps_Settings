@@ -84,7 +84,9 @@ import com.android.settings.inputmethod.SpellCheckersSettings;
 import com.android.settings.inputmethod.UserDictionaryList;
 import com.android.settings.location.LocationSettings;
 import com.android.settings.nfc.AndroidBeam;
+import com.android.settings.beanstalk.BatteryIconStyle;
 import com.android.settings.beanstalk.QuietHours;
+import com.android.settings.beanstalk.DisplayRotation;
 import com.android.settings.nfc.PaymentSettings;
 import com.android.settings.print.PrintJobSettingsFragment;
 import com.android.settings.print.PrintServiceSettingsFragment;
@@ -364,7 +366,9 @@ public class Settings extends PreferenceActivity
         KeyboardLayoutPickerFragment.class.getName(),
         BlacklistSettings.class.getName(),
         ApnSettings.class.getName(),
-	QuietHours.class.getName()
+	QuietHours.class.getName(),
+	BatteryIconStyle.class.getName(),
+        DisplayRotation.class.getName()
     };
 
     @Override
@@ -1176,4 +1180,6 @@ public class Settings extends PreferenceActivity
     public static class AboutActivity extends Settings { /* empty */ }
     public static class ASSRamBarActivity extends Settings { /* empty */ }
     public static class QuietHoursSettingsActivity extends Settings { /* empty */ }
+    public static class BatteryIconStyleSettingsActivity extends Settings { /* empty */ }
+    public static class DisplayRotationSettingsActivity extends Settings { /* empty */ }
 }
