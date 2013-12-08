@@ -40,6 +40,11 @@
          <extra android:name="fragment" android:value="com.android.settings.beanstalk.fragments.LockscreenShortcutFragment" />
     </PreferenceScreen>
 
+    <PreferenceScreen
+        android:key="keyguard_style"
+        android:fragment="com.android.settings.beanstalk.LockscreenStyle"
+        android:title="@string/lockscreen_style_title"/>
+
     <PreferenceCategory
         android:title="@string/lockscreen_widgets_title"
         android:key="keyguard_enable_widgets" >
