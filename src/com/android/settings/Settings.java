@@ -84,6 +84,7 @@ import com.android.settings.inputmethod.SpellCheckersSettings;
 import com.android.settings.inputmethod.UserDictionaryList;
 import com.android.settings.location.LocationSettings;
 import com.android.settings.nfc.AndroidBeam;
+import com.android.settings.beanstalk.QuietHours;
 import com.android.settings.nfc.PaymentSettings;
 import com.android.settings.print.PrintJobSettingsFragment;
 import com.android.settings.print.PrintServiceSettingsFragment;
@@ -362,7 +363,8 @@ public class Settings extends PreferenceActivity
         PaymentSettings.class.getName(),
         KeyboardLayoutPickerFragment.class.getName(),
         BlacklistSettings.class.getName(),
-        ApnSettings.class.getName()
+        ApnSettings.class.getName(),
+	QuietHours.class.getName()
     };
 
     @Override
