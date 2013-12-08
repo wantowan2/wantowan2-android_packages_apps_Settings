@@ -1717,7 +1717,6 @@
         />
 
         <!-- CyanogenMod activities Start -->
-        <activity android:name=".cyanogenmod.SystemUiSettings"/>
 
         <activity android:name=".cyanogenmod.AutoBrightnessSetup"
                 android:excludeFromRecents="true"
