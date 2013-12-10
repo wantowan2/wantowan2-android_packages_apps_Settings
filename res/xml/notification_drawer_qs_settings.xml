@@ -49,6 +49,12 @@ limitations under the License.
     <PreferenceCategory
         android:title="@string/quick_settings_title" />
 
+        <PreferenceScreen
+            android:key="tile_picker"
+            android:title="@string/tile_picker_title"
+            android:summary="@string/tile_picker_summary"
+            android:fragment="com.android.settings.beanstalk.quicksettings.QuickSettingsTiles" />
+
         <ListPreference
             android:key="quick_pulldown"
             android:title="@string/title_quick_pulldown"
@@ -61,12 +67,6 @@ limitations under the License.
             android:fragment="com.android.settings.beanstalk.quicksettings.QuickSettingsTilesStyle"
             android:title="@string/quicksettings_tiles_style"
             android:summary="@string/summary_quicksettings_tiles_style" />
-
-        <PreferenceScreen
-            android:key="tile_picker"
-            android:title="@string/tile_picker_title"
-            android:summary="@string/tile_picker_summary"
-            android:fragment="com.android.settings.beanstalk.quicksettings.QuickSettingsTiles" />
 
     <PreferenceCategory
         android:title="@string/additional_options_title" />
