@@ -27,7 +27,7 @@ import android.telephony.PhoneStateListener;
 import android.telephony.SmsMessage;
 import android.telephony.TelephonyManager;
 
-import com.android.internal.util.slim.QuietHoursHelper;
+import com.android.internal.util.beanstalk.QuietHoursHelper;
 
 import com.android.settings.R;
 
