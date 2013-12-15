@@ -18,12 +18,16 @@ package com.android.settings.beanstalk;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.content.ContentResolver;
 import android.provider.Settings;
+import android.content.res.Resources;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.content.DialogInterface;
+import android.view.WindowManagerGlobal;
 import android.content.Intent;
 import android.preference.PreferenceScreen;
+import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
@@ -55,6 +59,7 @@ public class MiscSettings extends SettingsPreferenceFragment
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.misc_settings);
+	PreferenceScreen prefScreen = getPreferenceScreen();
 
 	mCustomLabel = findPreference(PREF_CUSTOM_CARRIER_LABEL);
         mMsob = (ListPreference) findPreference(PREF_MEDIA_SCANNER_ON_BOOT);
