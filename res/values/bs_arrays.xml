@@ -542,6 +542,7 @@
         <item>@string/shortcut_action_screenshot</item>
         <item>@string/shortcut_action_sound</item>
 	<item>@string/shortcut_action_screenrecord</item>
+	<item>@string/shortcut_action_profile</item>
     </string-array>
 
     <string-array name="shortcut_action_power_menu_values" translatable="false">
@@ -553,6 +554,7 @@
         <item>**screenshot**</item>
         <item>**sound**</item>
         <item>**screenrecord**</item>
+        <item>**profile**</item>
     </string-array>
 
     <!-- MediaScanner behavior on boot -->
