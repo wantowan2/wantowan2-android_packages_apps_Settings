@@ -1054,4 +1054,24 @@
     <!-- Header on first screen of choose encryption password [CHAR LIMIT=30] -->
     <string name="encryptionpassword_choose_your_password_header">Set encryption password</string>
 
+     <!-- Recents clear all -->
+    <string name="show_recent_clear_all_button_title">Clear all button</string>
+    <string name="show_recent_clear_all_button_summary">Show clear all button within the recent applications view</string>
+    <string name="recent_clear_all_button_location_title">Clear all button position</string>
+    <string name="recent_clear_all_button_location_summary">Choose position of the clear all button</string>
+    <string name="recent_clear_all_button_location_top_left">Top left</string>
+    <string name="recent_clear_all_button_location_top_right">Top right</string>
+    <string name="recent_clear_all_button_location_bottom_left">Bottom left</string>
+    <string name="recent_clear_all_button_location_bottom_right">Bottom right</string>
+
+    <!-- Memory Indicator -->
+    <string name="show_recents_memory_indicator_title">Memory indicator</string>
+    <string name="show_recents_memory_indicator_summary">Show a memory indicator within the recent applications view</string>
+    <string name="recents_memory_indicator_location_title">Memory indicator position</string>
+    <string name="recents_memory_indicator_location_summary">Choose position of the memory indicator</string>
+
+    <string name="bars_and_menus_category_recent_panel_title" >Recents view</string>
+    <string name="ram_settings_title" >Recents view settings</string>
+    <string name="ram_settings" >Ram settings</string>
+
 </resources>
