@@ -1071,7 +1071,6 @@
     <string name="recents_memory_indicator_location_summary">Choose position of the memory indicator</string>
 
     <string name="bars_and_menus_category_recent_panel_title" >Recents view</string>
-    <string name="ram_settings_title" >Recents view settings</string>
-    <string name="ram_settings" >Ram settings</string>
+    <string name="recents_view_settings" >Recents view settings</string>
 
 </resources>
