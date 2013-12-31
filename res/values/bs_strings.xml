@@ -1090,5 +1090,6 @@
     <string name="button_power_key_title">Power button</string>
     <string name="fast_torch_title">Fast torch</string>
     <string name="fast_torch_summary">Enable holding the power button with the screen off to control Torch</string>
+    <string name="performance_settings">Performance control</string>
 
 </resources>
