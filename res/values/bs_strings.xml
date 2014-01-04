@@ -1118,9 +1118,6 @@
     <string name="allow_rotate_title">Allow rotation</string>
     <string name="allow_rotate_summary">Enables landscape mode on lockscreen.</string>
 
-    <string name="title_floating_window">Floating window</string>
-    <string name="summary_floating_window">Open Quick Settings tiles in floating window</string>
-
     <!-- Show 4G icon instead of LTE. User defined settings -->
     <string name="show_lte_or_fourgee_title">Show 4G network</string>
     <string name="show_lte_or_fourgee_summary">This will allow you to show you 4G instead of LTE</string>
