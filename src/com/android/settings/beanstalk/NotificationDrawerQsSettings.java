@@ -53,12 +53,14 @@ public class NotificationDrawerQsSettings extends SettingsPreferenceFragment
 
     private static final String KEY_POWER_WIDGET = "power_widget";
     private static final String KEY_NOTIFICATION_DRAWER_TABLET = "notification_drawer_tablet";
+    private static final String FLOATING_WINDOW ="floating_window";
 
     private PreferenceScreen mPhoneDrawer;
     private PreferenceScreen mTabletDrawer;
 
     CheckBoxPreference mHideCarrier;
     SeekBarPreference mNotificationAlpha;
+    CheckBoxPreference mFloatingWindow;
     ListPreference mQuickPulldown;
 
     @Override
@@ -98,6 +100,9 @@ public class NotificationDrawerQsSettings extends SettingsPreferenceFragment
         mNotificationAlpha.setInitValue((int) (transparency * 100));
         mNotificationAlpha.setProperty(Settings.System.NOTIFICATION_ALPHA);
         mNotificationAlpha.setOnPreferenceChangeListener(this);
+
+	mFloatingWindow = (CheckBoxPreference) prefSet.findPreference(FLOATING_WINDOW);
+        mFloatingWindow.setChecked(Settings.System.getInt(resolver, Settings.System.QS_FLOATING_WINDOW, 0) == 1);
 
 	mPhoneDrawer = (PreferenceScreen) findPreference(KEY_POWER_WIDGET);
         mTabletDrawer = (PreferenceScreen) findPreference(KEY_NOTIFICATION_DRAWER_TABLET);
@@ -146,6 +151,17 @@ public class NotificationDrawerQsSettings extends SettingsPreferenceFragment
         super.onResume();
         QuickSettingsUtil.updateAvailableTiles(getActivity());
         updateQuickSettingsOptions();
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        ContentResolver resolver = getActivity().getContentResolver();
+	if (preference == mFloatingWindow) {
+            Settings.System.putInt(resolver, Settings.System.QS_FLOATING_WINDOW,
+                    mFloatingWindow.isChecked() ? 1 : 0);
+            return true;
+        }
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     @Override

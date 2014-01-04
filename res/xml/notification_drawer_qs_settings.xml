@@ -62,6 +62,11 @@ limitations under the License.
             android:entryValues="@array/quick_pulldown_values"
             android:persistent="false" />
 
+	<CheckBoxPreference
+            android:key="floating_window"
+            android:title="@string/title_floating_window"
+            android:summary="@string/summary_floating_window" />
+
         <PreferenceScreen
             android:key="quicksettings_tiles_style"
             android:fragment="com.android.settings.beanstalk.quicksettings.QuickSettingsTilesStyle"
