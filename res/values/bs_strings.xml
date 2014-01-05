@@ -158,8 +158,8 @@
     <string name="hide_network_speed_summary">Hide network stats indicator when there is no traffic</string>
 
     <!-- Display : Animation options -->
-    <string name="screen_and_animations_title">Screen and animations</string>
-    <string name="display_category_animation_options_title">Screen and animation options</string>
+    <string name="screen_and_animations_title">Display and animations</string>
+    <string name="display_category_animation_options_title">Display and animation options</string>
     <string name="system_power_crt_mode_title">CRT animation </string>
     <string name="system_power_crt_mode_dialog_title">CRT animation</string>
     <string name="system_power_crt_mode_off">Don\'t show</string>
@@ -1136,7 +1136,7 @@
     <string name="edge_swipe_hide">Toggle status bar</string>
     <string name="edge_swipe_expand_qs">Expand quick settings</string>
     <string name="edge_swipe_back">Back</string>
-    <string name="edge_swipe_app_switch">Quick app switch</string>
+    <string name="edge_swipe_app_switch">Toggle last app</string>
     <string name="edge_swipe_home">Home</string>
     <string name="edge_swipe_menu">Menu</string>
     <string name="edge_swipe_app">Launch application ...</string>
