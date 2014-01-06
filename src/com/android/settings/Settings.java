@@ -90,6 +90,7 @@ import com.android.settings.nfc.AndroidBeam;
 import com.android.settings.beanstalk.BatteryIconStyle;
 import com.android.settings.beanstalk.QuietHours;
 import com.android.settings.beanstalk.DisplayRotation;
+import com.android.settings.beanstalk.quicksettings.QuickSettingsTiles;
 import com.android.settings.nfc.PaymentSettings;
 import com.android.settings.print.PrintJobSettingsFragment;
 import com.android.settings.print.PrintServiceSettingsFragment;
@@ -364,6 +365,7 @@ public class Settings extends PreferenceActivity
         BlacklistSettings.class.getName(),
         ApnSettings.class.getName(),
 	QuietHours.class.getName(),
+        QuickSettingsTiles.class.getName(),
 	BatteryIconStyle.class.getName(),
         DisplayRotation.class.getName(),
         HomeSettings.class.getName(),
@@ -1190,6 +1192,7 @@ public class Settings extends PreferenceActivity
     public static class AboutActivity extends Settings { /* empty */ }
     public static class ASSRamBarActivity extends Settings { /* empty */ }
     public static class QuietHoursSettingsActivity extends Settings { /* empty */ }
+    public static class QuickSettingsTilesSettingsActivity extends Settings { /* empty */ }
     public static class BatteryIconStyleSettingsActivity extends Settings { /* empty */ }
     public static class DisplayRotationSettingsActivity extends Settings { /* empty */ }
     public static class PerformanceSettingsActivity extends Settings { /* empty */ }
