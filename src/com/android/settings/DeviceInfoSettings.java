@@ -26,6 +26,7 @@ import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.preference.Preference;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.util.Log;
@@ -72,6 +73,7 @@ public class DeviceInfoSettings extends RestrictedSettingsFragment {
     private static final String KEY_MOD_VERSION = "mod_version";
 //    private static final String KEY_MOD_BUILD_DATE = "build_date";
     private static final String KEY_DEVICE_CPU = "device_cpu";
+    private static final String KEY_BEANSTALKOTA = "beanstalkota_settings";
     private static final String KEY_DEVICE_MEMORY = "device_memory";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
@@ -142,6 +144,12 @@ public class DeviceInfoSettings extends RestrictedSettingsFragment {
         // Remove Baseband version if wifi-only device
         if (Utils.isWifiOnly(getActivity())) {
             getPreferenceScreen().removePreference(findPreference(KEY_BASEBAND_VERSION));
+        }
+
+	if (UserHandle.myUserId() == UserHandle.USER_OWNER) {
+            removePreferenceIfPackageNotInstalled(findPreference(KEY_BEANSTALKOTA));
+        } else {
+            getPreferenceScreen().removePreference(findPreference(KEY_BEANSTALKOTA));
         }
 
         /*
@@ -411,5 +419,23 @@ public class DeviceInfoSettings extends RestrictedSettingsFragment {
         } catch (IOException e) {}
 
         return result;
+    }
+
+    private boolean removePreferenceIfPackageNotInstalled(Preference preference) {
+        String intentUri = ((PreferenceScreen) preference).getIntent().toUri(1);
+        Pattern pattern = Pattern.compile("component=([^/]+)/");
+        Matcher matcher = pattern.matcher(intentUri);
+
+        String packageName = matcher.find() ? matcher.group(1) : null;
+        if(packageName != null) {
+            try {
+                getPackageManager().getPackageInfo(packageName, 0);
+            } catch (NameNotFoundException e) {
+                Log.e(LOG_TAG,"package "+packageName+" not installed, hiding preference.");
+                getPreferenceScreen().removePreference(preference);
+                return true;
+            }
+        }
+        return false;
     }
 }
