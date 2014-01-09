@@ -1279,7 +1279,6 @@
     <string-array name="edge_swipe_entries">
         <item>@string/edge_swipe_none</item>
         <item>@string/edge_swipe_expand</item>
-        <item>@string/edge_swipe_hide</item>
         <item>@string/edge_swipe_expand_qs</item>
         <item>@string/edge_swipe_back</item>
         <item>@string/edge_swipe_home</item>
@@ -1292,7 +1291,6 @@
     <string-array name="edge_swipe_values" translatable="false">
         <item>0</item>
         <item>1</item>
-        <item>2</item>
         <item>3</item>
         <item>4</item>
         <item>5</item>
