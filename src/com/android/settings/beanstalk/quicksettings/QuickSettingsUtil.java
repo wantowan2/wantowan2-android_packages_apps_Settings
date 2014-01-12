@@ -55,6 +55,7 @@ import static com.android.internal.util.beanstalk.QSConstants.TILE_WIFI;
 import static com.android.internal.util.beanstalk.QSConstants.TILE_WIFIAP;
 import static com.android.internal.util.beanstalk.QSConstants.TILE_REBOOT;
 import static com.android.internal.util.beanstalk.QSConstants.TILE_INTERNALMEMORY;
+import static com.android.internal.util.beanstalk.QSConstants.TILE_FCHARGE;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -170,6 +171,9 @@ public class QuickSettingsUtil {
 	registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_INTERNALMEMORY, R.string.internal_memory_tile,
                 "com.android.systemui:drawable/ic_qs_internalmemory"));
+        registerTile(new QuickSettingsUtil.TileInfo(
+                TILE_FCHARGE, R.string.title_tile_fcharge,
+                "com.android.systemui:drawable/ic_qs_fcharge_off"));
     }
 
     private static void registerTile(QuickSettingsUtil.TileInfo info) {
@@ -220,6 +224,11 @@ public class QuickSettingsUtil {
         // Don't show the Torch tile if not supported
         if (!DeviceUtils.deviceSupportsTorch(context)) {
             removeTile(TILE_TORCH);
+        }
+
+        // Don't show the Fast charge tile if not supported by kernel
+        if (!DeviceUtils.fchargeEnabled(context)) {
+            removeTile(TILE_FCHARGE);
         }
 
     }
