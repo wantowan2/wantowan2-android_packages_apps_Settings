@@ -57,6 +57,8 @@ import java.util.Date;
 import java.util.Calendar;
 import java.util.List;
 
+import com.android.settings.beanstalk.SeekBarPreference;
+
 public class SoundSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "SoundSettings";
@@ -93,6 +95,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_VOLUME_ADJUST_SOUNDS = "volume_adjust_sounds_enabled";
     private static final String KEY_CAMERA_SOUNDS = "camera_click_sound";
     private static final String PROP_CAMERA_SOUND = "persist.sys.camera-sound";
+    private static final String KEY_VIBRATION_DURATION = "vibration_duration";
 
     private static final String KEY_POWER_NOTIFICATIONS = "power_notifications";
     private static final String KEY_POWER_NOTIFICATIONS_VIBRATE = "power_notifications_vibrate";
@@ -124,6 +127,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private Preference mRingtonePreference;
     private Preference mNotificationPreference;
     private PreferenceScreen mQuietHours;
+    private SeekBarPreference mVibrationDuration;
 
     private Runnable mRingtoneLookupRunnable;
 
@@ -137,6 +141,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mPowerSounds;
     private CheckBoxPreference mPowerSoundsVibrate;
     private Preference mPowerSoundsRingtone;
+
+    private Vibrator mVib;
+    private boolean mFirstVibration = false;
 
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -171,6 +178,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         int activePhoneType = TelephonyManager.getDefault().getCurrentPhoneType();
 
         mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+
+	mVib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         addPreferencesFromResource(R.xml.sound_settings);
 
@@ -222,15 +231,26 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mCameraSounds.setValue(Integer.toString(currentCamSound));
         mCameraSounds.setSummary(mCameraSounds.getEntry());
 
+	int userMillis = Settings.System.getInt(resolver,
+                Settings.System.MINIMUM_VIBRATION_DURATION, 0);
+        mVibrationDuration = (SeekBarPreference) findPreference(KEY_VIBRATION_DURATION);
+        mVibrationDuration.setInitValue(userMillis);
+        mVibrationDuration.setInterval(1);
+        mVibrationDuration.displaySameValue(true);
+        mVibrationDuration.zeroDefault(true);
+        mVibrationDuration.isMilliseconds(true);
+        mVibrationDuration.setProperty(Settings.System.MINIMUM_VIBRATION_DURATION);
+        mVibrationDuration.setOnPreferenceChangeListener(this);
+	
         mRingtonePreference = findPreference(KEY_RINGTONE);
         mNotificationPreference = findPreference(KEY_NOTIFICATION_SOUND);
 
-        Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        if (vibrator == null || !vibrator.hasVibrator()) {
+        if (mVib == null || !mVib.hasVibrator()) {
             removePreference(KEY_VIBRATE);
             removePreference(KEY_HAPTIC_FEEDBACK);
             removePreference(KEY_CONVERT_SOUND_TO_VIBRATE);
             removePreference(KEY_VIBRATE_DURING_CALLS);
+	    removePreference(KEY_VIBRATION_DURATION);
         }
 
         if (TelephonyManager.PHONE_TYPE_CDMA == activePhoneType) {
@@ -488,6 +508,14 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.MODE_VOLUME_OVERLAY, value);
             mVolumeOverlay.setSummary(mVolumeOverlay.getEntries()[index]);
+	} else if (preference == mVibrationDuration) {
+            int value = Integer.parseInt((String) objValue);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.MINIMUM_VIBRATION_DURATION, value);
+            if (mFirstVibration && (value % 5 == 0) && mVib != null) {
+                mVib.vibrate(1);
+            }
+            mFirstVibration = true;
         } else if (preference == mCameraSounds) {
             final int value = Integer.valueOf((String)objValue);
             final int index = mCameraSounds.findIndexOfValue((String) objValue);

@@ -1155,4 +1155,7 @@
     <string name="camera_sounds_entry_stock">Default (bloop)</string>
     <string name="camera_sounds_entry_realistic">Realistic (click)</string>
     <string name="camera_sounds_entry_off">Disabled (ILLEGAL in some areas)</string>
+
+    <!-- Minimum Vibration Duration -->
+    <string name="minimum_vibration_duration">Minimum vibration duration</string>
 </resources>
