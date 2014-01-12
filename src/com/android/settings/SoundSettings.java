@@ -245,14 +245,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mRingtonePreference = findPreference(KEY_RINGTONE);
         mNotificationPreference = findPreference(KEY_NOTIFICATION_SOUND);
 
-        if (mVib == null || !mVib.hasVibrator()) {
-            removePreference(KEY_VIBRATE);
-            removePreference(KEY_HAPTIC_FEEDBACK);
-            removePreference(KEY_CONVERT_SOUND_TO_VIBRATE);
-            removePreference(KEY_VIBRATE_DURING_CALLS);
-	    removePreference(KEY_VIBRATION_DURATION);
-        }
-
         if (TelephonyManager.PHONE_TYPE_CDMA == activePhoneType) {
             ListPreference emergencyTonePreference =
                 (ListPreference) findPreference(KEY_EMERGENCY_TONE);
@@ -303,9 +295,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mPowerSoundsVibrate = (CheckBoxPreference) findPreference(KEY_POWER_NOTIFICATIONS_VIBRATE);
         mPowerSoundsVibrate.setChecked(Settings.Global.getInt(resolver,
                 Settings.Global.POWER_NOTIFICATIONS_VIBRATE, 0) != 0);
-        if (vibrator == null || !vibrator.hasVibrator()) {
-            removePreference(KEY_POWER_NOTIFICATIONS_VIBRATE);
-        }
 
         mPowerSoundsRingtone = findPreference(KEY_POWER_NOTIFICATIONS_RINGTONE);
         String currentPowerRingtonePath =
@@ -327,6 +316,15 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             if (ringtone != null) {
                 mPowerSoundsRingtone.setSummary(ringtone.getTitle(getActivity()));
             }
+        }
+
+        if (mVib == null || !mVib.hasVibrator()) {
+            removePreference(KEY_VIBRATE);
+            removePreference(KEY_HAPTIC_FEEDBACK);
+            removePreference(KEY_CONVERT_SOUND_TO_VIBRATE);
+            removePreference(KEY_VIBRATE_DURING_CALLS);
+	    removePreference(KEY_VIBRATION_DURATION);
+	    removePreference(KEY_POWER_NOTIFICATIONS_VIBRATE);
         }
 
         initDockSettings();
