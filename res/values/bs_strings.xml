@@ -1166,4 +1166,21 @@
 
     <!-- Minimum Vibration Duration -->
     <string name="minimum_vibration_duration">Minimum vibration duration</string>
+
+    <!-- Statusbar | Signal -->
+    <string name="signal_style">Signal text style</string>
+    <string name="signal_color_title">Signal color</string>
+    <string name="hide_signal_title">Hide signal bars</string>
+    <string name="hide_signal_summary">Updates when signal strength changes</string>
+    <string name="wifi_signal_style">WiFi signal text style</string>
+    <string name="wifi_signal_color_title">WiFi signal color</string>
+
+    <!-- signal style -->
+    <string name="show_signal_bars">Show signal bars</string>
+    <string name="show_signal_text">Show signal text</string>
+    <string name="show_with_dbm">Show with dBm</string>
+    <string name="status_bar_signal_header">Signal</string>
+
+    <string name="vibrate_notif_expand_title">Vibrate on expand</string>
+    <string name="vibrate_notif_expand_summary">Vibrate when expanding notifications</string>
 </resources>
