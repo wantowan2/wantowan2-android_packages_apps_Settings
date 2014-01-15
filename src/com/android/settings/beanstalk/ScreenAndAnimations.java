@@ -86,8 +86,8 @@ public class ScreenAndAnimations extends SettingsPreferenceFragment implements
             mCrtMode.setSummary(mCrtMode.getEntries()[index]);
         }
 	if (KEY_LISTVIEW_ANIMATION.equals(key)) {
-            int value = Integer.parseInt((String) objValue);
-            int index = mListViewAnimation.findIndexOfValue((String) objValue);
+            int value = Integer.parseInt((String) newValue);
+            int index = mListViewAnimation.findIndexOfValue((String) newValue);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LISTVIEW_ANIMATION,
                     value);
@@ -95,8 +95,8 @@ public class ScreenAndAnimations extends SettingsPreferenceFragment implements
             mListViewInterpolator.setEnabled(value > 0);
         }
         if (KEY_LISTVIEW_INTERPOLATOR.equals(key)) {
-            int value = Integer.parseInt((String) objValue);
-            int index = mListViewInterpolator.findIndexOfValue((String) objValue);
+            int value = Integer.parseInt((String) newValue);
+            int index = mListViewInterpolator.findIndexOfValue((String) newValue);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LISTVIEW_INTERPOLATOR,
                     value);

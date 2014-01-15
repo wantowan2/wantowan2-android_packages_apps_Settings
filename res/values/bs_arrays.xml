@@ -1349,9 +1349,7 @@
     </string-array>
 
     <!-- Listview animation -->
-
-+    <string-array name="listview_animation_entries">
-
+    <string-array name="listview_animation_entries">
         <item>@string/listview_off</item>
         <item>@string/listview_wave_left</item>
         <item>@string/listview_wave_right</item>

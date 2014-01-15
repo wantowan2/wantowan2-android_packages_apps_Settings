@@ -55,7 +55,7 @@ import com.android.settings.DialogCreatable;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
-import com.android.settings.widget.SeekBarPreference;
+import com.android.settings.beanstalk.SeekBarPreference;
 
 import java.util.HashSet;
 import java.util.List;
