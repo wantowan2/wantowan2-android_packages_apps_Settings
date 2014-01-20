@@ -1834,6 +1834,8 @@
             </intent-filter>
         </activity>
 
+	<activity android:name=".beanstalk.StatusBarColor" />
+
         <activity android:name=".ApnEditor" />
 
         <activity android:name="Settings$AnonymousStatsActivity"
