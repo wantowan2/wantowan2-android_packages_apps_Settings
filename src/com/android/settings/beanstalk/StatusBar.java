@@ -85,6 +85,9 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
 
     private static final String PREF_STATUS_BAR_OPAQUE_COLOR = "status_bar_opaque_color";
+    private static final String KEY_SMS_BREATH = "sms_breath";
+    private static final String KEY_MISSED_CALL_BREATH = "missed_call_breath";
+    private static final String KEY_VOICEMAIL_BREATH = "voicemail_breath";
 
     private ColorPickerPreference mColorPicker;
     private ColorPickerPreference mColorPickerz;
@@ -92,6 +95,9 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private CheckBoxPreference mCustomBarColor;
     private ColorPickerPreference mBarOpaqueColor;
     private CheckBoxPreference mStatusBarBrightnessControl;
+    private CheckBoxPreference mSMSBreath;
+    private CheckBoxPreference mMissedCallBreath;
+    private CheckBoxPreference mVoicemailBreath;
 
     ListPreference mDbmStyletyle;
     CheckBoxPreference mHideSignal;
@@ -137,6 +143,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                 .getContentResolver(), Settings.System.STATUSBAR_HIDE_SIGNAL_BARS,
                 0) != 0);
 
+        mSMSBreath = (CheckBoxPreference) prefSet.findPreference(KEY_SMS_BREATH);
+        mMissedCallBreath = (CheckBoxPreference) prefSet.findPreference(KEY_MISSED_CALL_BREATH);
+        mVoicemailBreath = (CheckBoxPreference) prefSet.findPreference(KEY_VOICEMAIL_BREATH);
+
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -178,6 +188,20 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUSBAR_HIDE_SIGNAL_BARS,
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
+            return true;
+        } else if (preference == mMissedCallBreath) {
+            value = mMissedCallBreath.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.KEY_MISSED_CALL_BREATH, value ? 1 : 0);
+            return true;
+        } else if (preference == mVoicemailBreath) {
+            value = mVoicemailBreath.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.KEY_VOICEMAIL_BREATH, value ? 1 : 0);
+            return true;
+        } else if (preference == mSMSBreath) {
+            value = mSMSBreath.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(), 			    Settings.System.KEY_SMS_BREATH, value ? 1 : 0);
             return true;
         }
         return false;
