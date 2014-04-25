@@ -46,6 +46,7 @@ import static com.android.internal.util.beanstalk.QSConstants.TILE_RINGER;
 import static com.android.internal.util.beanstalk.QSConstants.TILE_SCREENTIMEOUT;
 import static com.android.internal.util.beanstalk.QSConstants.TILE_SETTINGS;
 import static com.android.internal.util.beanstalk.QSConstants.TILE_SLEEP;
+import static com.android.internal.util.beanstalk.QSConstants.TILE_SHAKE;
 import static com.android.internal.util.beanstalk.QSConstants.TILE_SYNC;
 import static com.android.internal.util.beanstalk.QSConstants.TILE_TORCH;
 import static com.android.internal.util.beanstalk.QSConstants.TILE_USBTETHER;
@@ -178,6 +179,9 @@ public class QuickSettingsUtil {
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_ONTHEGO, R.string.title_tile_onthego,
                 "com.android.systemui:drawable/ic_qs_onthego"));
+        registerTile(new QuickSettingsUtil.TileInfo(
+                TILE_SHAKE, R.string.title_tile_shake,
+                "com.android.systemui:drawable/ic_qs_shake_events"));
     }
 
     private static void registerTile(QuickSettingsUtil.TileInfo info) {
