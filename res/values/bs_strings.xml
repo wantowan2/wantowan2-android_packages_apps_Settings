@@ -973,6 +973,10 @@
     <string name="shake_to_secure_dlg_title">Warning:</string>
     <string name="shake_to_secure_dlg_message">Your device will be insecure until you explicitly shake to enable a temporary secure lock.  Once secure: if your device is successfully unlocked it will become insecure until you shake again.</string>
     <string name="shake_secure_timeout_title">Automatically resecure</string>
+    <string name="shake_all">Shake any direction</string>
+    <string name="shake_horizontal">Shake horizontally</string>
+    <string name="shake_vertical">Shake vertically</string>
+    <string name="shake_back_forth">Shake back-and-forth</string>
     <string name="shake_secure_timeout_disabled">Never automatically secure</string>
     <string name="shake_secure_timeout_1min">1 minute after screen turned off</string>
     <string name="shake_secure_timeout_5min">5 minutes after screen turned off</string>
@@ -1560,6 +1564,8 @@
     <string name="pie_trigger_warning">Minimum one of the main triggers (bottom, left or right) needs to be enabled.</string>
     <string name="pie_disable_ime_triggers_title">Reduce trigger size on keyboard</string>
     <string name="pie_disable_ime_triggers_summary">Reduces left and right trigger size if keyboard is active</string>
+
+    <string name="shortcut_action_keyguard_camera">Keyguard camera</string>
 
     <!-- BeanStalk Shortcuts -->
     <string name="slim_shortcut_picker">BeanStalk Actions</string>
