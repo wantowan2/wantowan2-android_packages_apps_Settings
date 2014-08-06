@@ -2128,4 +2128,12 @@
     <string name="app_circle_bar_summary">Show circle app launcher after touching right side of screen</string>
     <string name="app_circle_bar_included_apps_title">Included apps</string>
     <string name="app_circle_bar_included_apps_summary">Apps will show in app circle bar</string>
+
+    <!-- Kill app long-press back -->
+    <string name="kill_app_longpress_back">Kill app back button</string>
+    <string name="kill_app_longpress_back_summary">Kill the foreground app by long-pressing the back button</string>
+    <string name="kill_app_longpress_back_title">Back to Kill App</string>
+    <string name="kill_app_longpress_back_delay_title">Kill app back button delay</string>
+    <string name="kill_app_longpress_back_delay_summary">delay for Back to Kill</string>
+
 </resources>

@@ -32,6 +32,12 @@
             android:targetClass="com.cyanogenmod.settings.device.BluetoothInputSettings" />
     </Preference>
 
+    <Preference
+        android:key="back_to_kill"
+        android:fragment="com.android.settings.beanstalk.BackToKill"
+        android:title="@string/kill_app_longpress_back_title"
+        android:summary="@string/kill_app_longpress_back_summary" />
+
     <PreferenceCategory
         android:key="home_key"
         android:title="@string/hardware_keys_home_key_title" >
